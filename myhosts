@@ -1,4 +1,6 @@
+
 [appserver]
-ip-172-31-19-127.ap-southeast-1.compute.internal
+172.31.19.127
+
 [localh]
-localhost
+172.31.19.21
