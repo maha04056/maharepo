@@ -2,7 +2,6 @@
 - hosts: appserver
   become: yes
   tasks:
-    
     - name: installing tomcat 
       yum:
         name: tomcat
