@@ -1,0 +1,7 @@
+---
+- hosts: all
+  tasks:
+    - name:  This task with displaying with varibles
+      debug: 
+        msg{{"ansible_all_ipv4_addresses":}}
+
