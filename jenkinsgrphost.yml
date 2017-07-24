@@ -1,0 +1,11 @@
+---
+- hosts: appserver
+  become: yes
+  tasks:
+    - name: installing tomcat 
+      yum:
+        name: tomcat
+        state: absent
+    - name: just cheeking groups varibles
+      debug:
+        msg: "{{check_command}}"
