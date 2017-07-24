@@ -2,20 +2,11 @@
 - hosts: appserver
   become: yes
   tasks:
-    - name: installing openjkd 8 
-      yum:
-        name: java-1.6.0-openjdk.x86_64
-        state: present
+    
     - name: installing tomcat 
       yum:
         name: tomcat
-        state: present
-    - name: download jenkins 
-      get_url:
-        url: http://mirrors.jenkins.io/war-stable/latest/jenkins.war
-        dest: /usr/share/tomcat7/webapps/jenkins.war
-    - name: Enabling an start tomcat
-      service:
-        name: tomcat
-        state: started
-        enabled: yes
+        state: absent
+    - name: just cheeking groups varibles
+      debug:
+        msg: "{{log_folder}}"
