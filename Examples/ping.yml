@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+    - name:  ping all nodes
+      ping:
+    - name: find  who is working
+      command: whoami 
+    - name: find out current directroy
+      command: pwd  
+
