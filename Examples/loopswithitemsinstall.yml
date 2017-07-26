@@ -1,0 +1,9 @@
+---
+- host: all
+  become: yes
+  tasks:
+    - name: install apache on redhat
+      yum:
+        name: httpd
+        stat: present
+    

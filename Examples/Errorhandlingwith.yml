@@ -1,0 +1,18 @@
+---
+- host: all
+  become: yes
+  tasks:
+    - name: print centant of file
+      command: cat /home/ansible/test
+      register: cat_content
+    - name: dispaly contant
+      debug: 
+        msg: "{{cat_content}}"
+      when: cat_content.stderr==""  
+    - name: displayerror
+      debug:
+        msg:{{cat_content}} 
+      when: not cat_content.stderr==""
+     
+        
+    
