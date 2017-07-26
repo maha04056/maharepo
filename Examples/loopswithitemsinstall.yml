@@ -1,9 +1,13 @@
 ---
-- host: all
+- hosts: all
   become: yes
   tasks:
-    - name: install apache on redhat
+    - name: install {{ item }}
       yum:
-        name: httpd
-        stat: present
+        name: "{{ item }}"
+        with_items:
+          - git
+          - httpd
+          - tree
+         
     

@@ -1,18 +1,18 @@
 ---
-- host: all
+- hosts: localhost
   become: yes
   tasks:
     - name: print centant of file
-      command: cat /home/ansible/test
+      command: cat /home/maha/hosts/maharepo/Examples/ttest
       register: cat_content
     - name: dispaly contant
       debug: 
-        msg: "{{cat_content}}"
-      when: cat_content.stderr==""  
+        msg: "{{cat_content.stdout}}"
+      when: cat_content.stdout=="hello"  
     - name: displayerror
       debug:
-        msg:{{cat_content}} 
-      when: not cat_content.stderr==""
+        msg:{{cat_content.stderr}} 
+      when: cat_content.stderr==""
      
         
     

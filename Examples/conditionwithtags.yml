@@ -1,19 +1,19 @@
 ---
-- host: all
+- hosts: all
   become: yes
   tasks:
     - name: install apache on redhat
       yum:
         name: httpd
-        stat: present
+        state: present
       when: ansible_os_family=="RedHat"
       #when: not ansible_os_family=="RedHat"
       tags:
         - install
-    - name: install apache on redhat
+    - name: install apache on ubounto
       yum:
         name: apache2
-        stat: present
+        state: present
       when: ansible_os_family=="Debian"
       #when: not ansible_os_family=="RedHat"
     - name: print free memory
