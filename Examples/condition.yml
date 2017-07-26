@@ -1,0 +1,16 @@
+---
+- host: all
+  become: yes
+  tasks:
+    - name: install apache on redhat
+      yum:
+        name: httpd
+        stat: present
+      when: ansible_os_family=="RedHat"
+      #when: not ansible_os_family=="RedHat"
+    - name: install apache on redhat
+      yum:
+        name: apache2
+        stat: present
+      when: ansible_os_family=="Debian"
+      #when: not ansible_os_family=="RedHat"

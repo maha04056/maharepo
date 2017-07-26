@@ -1,0 +1,14 @@
+---
+- host: all
+  become: yes
+  tasks:
+    - name: install {{item}}
+      yum:
+        name: "{{item}}"
+        state: removed
+        with_items:
+          - git
+          - httpd
+          - tree
+         
+    
