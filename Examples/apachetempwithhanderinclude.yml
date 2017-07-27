@@ -1,9 +1,10 @@
 ---
-- hosts: all
+- hosts: localhost
+  vars:
+    inst_name: this is my apche template
   become: yes
-  
   tasks:
-    - #include: ping.yml
+#    - include: ping.yml
     - name: install apache on redhat
       yum:
         name: httpd
@@ -30,12 +31,15 @@
       template:
         src: tomcat.j2
         dest: /var/www/html/index.html
-        notify: restart httpd
-
-      handlers: 
-        name: restart httpd 
-        service:
-          name: httpd
-          state: restarted
-
-    
+    - name: restart httpd 
+      service:
+        name: httpd
+        state: restarted
+      notify:
+      - restart httpd 
+           
+  handlers: 
+    - name: restart httpd 
+      service:
+        name: httpd
+        state: restarted    
