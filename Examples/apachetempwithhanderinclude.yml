@@ -1,0 +1,41 @@
+---
+- hosts: all
+  become: yes
+  
+  tasks:
+    - #include: ping.yml
+    - name: install apache on redhat
+      yum:
+        name: httpd
+        state: present
+      when: ansible_os_family=="RedHat"
+     
+      tags:
+        - install
+    - name: install apache on ubounto
+      yum:
+        name: apache2
+        state: present
+      when: ansible_os_family=="Debian"
+
+    - name: print free memory
+      debug:
+        msg: "free memory is {{ansible_memory_mb.real.free}}"
+    - name: start and enable service
+      service:
+       name: httpd
+       state: started
+      when: ansible_os_family=="RedHat" 
+    - name: copy home page into webserser
+      template:
+        src: tomcat.j2
+        dest: /var/www/html/index.html
+        notify: restart httpd
+
+      handlers: 
+        name: restart httpd 
+        service:
+          name: httpd
+          state: restarted
+
+    

@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  vars:
+    description: this is my execution
+    
+  become: yes
+  tasks:
+    - name: creat the file with hostname and os into
+      template:
+        src: info.j2
+        dest: /home/ansible/info
+
+      
+      
