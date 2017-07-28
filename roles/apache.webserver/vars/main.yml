@@ -1,5 +1,5 @@
 ---
 # vars file for apache.webserver
-apache_pakages_deb: apache
+apache_pakages_deb: apache2
 apache_pakages_rhel: httpd
 apache_homepage: /var/www/html/index.html

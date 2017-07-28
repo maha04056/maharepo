@@ -1,0 +1,2 @@
+
+copy file from server to local -scp -r maha@13.229.52.173:/home/maha/roles .

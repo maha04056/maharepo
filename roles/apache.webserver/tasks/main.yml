@@ -18,11 +18,19 @@
   set_fact:
     apache_pakage: {{apache_pakages_rhel}}
   when: ansible_os_family=="RedHat"
+
 - name: services enable and start
   service:
     name: {{apache_pakage}}
     enabled: true
     state: started
+
+- name: display service name
+  debug:
+    msg: "{{apache_pakage}}"
+  notify:
+  when: ansible_os_family=="RedHat"
+    
 
 
   
