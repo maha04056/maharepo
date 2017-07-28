@@ -1,0 +1,28 @@
+---
+# tasks file for apache.webserver
+- name: install apache on debian
+  apt:
+    name: "{{apache_pakages_deb}}"
+    state: present
+  when: ansible_os_family=="RedHat"
+- name: install apache on rhel
+  yum:
+    name: "{{apache_pakages_rhel}}"
+    state: present
+  when: ansible_os_family=="Debian"
+- name: set service for Debian
+  set_fact:
+    apache_pakage: {{apache_pakages_deb}}
+  when: ansible_os_family=="Debian"
+- name: set service for rhel
+  set_fact:
+    apache_pakage: {{apache_pakages_rhel}}
+  when: ansible_os_family=="RedHat"
+- name: services enable and start
+  service:
+    name: {{apache_pakage}}
+    enabled: true
+    state: started
+
+
+  
