@@ -1,8 +1,14 @@
-erver]
+[webserver]
 172.31.19.127
 
 [appserver]
-ip-172-31-19-127.ap-southeast-1.compute.internal
+172.31.19.21
 
 [localhost]
-localhost
+172.31.19.21
+
+[rhelserver]
+172.31.19.21
+
+[ubuntuserver]
+172.31.31.59
