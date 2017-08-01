@@ -1,0 +1,6 @@
+---
+package_install: 'httpd'
+tomuser: 'maha'
+tompass: 'maha' 
+javamaxvalue: '512'
+javaminvalue: '256'
