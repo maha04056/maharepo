@@ -20,29 +20,15 @@
       apt: 
         name: "{{package_install}}"
         state: present
-      notify:
+      notify: 
       - restarttomcat
       when:  ansible_os_family=="Debian" 
-
-    - name: add the tomcat change jvm heap memory
-      template:
-        src: tomcatjvm.j2
-        dest:  /etc/default/tomcat7
-      notify: restarttomcat
-      when:  ansible_os_family=="Debian"
-      
-    - name: add the tomcat user
-      template:
-        src: tomuser.j2
-        dest:  /etc/tomcat7/tomcat-users.xml
-      notify: restarttomcat
-      when:  ansible_os_family=="Debian"
-
     - name: download the openmrs war file
       get_url:
         url: https://sourceforge.net/projects/openmrs/files/releases/OpenMRS_Platform_2.0.5/openmrs.war
         dest: /var/lib/tomcat7/webapps/openmrs.war
-      notify: restarttomcat
+      notify:
+      - restarttomcat
       when:  ansible_os_family=="Debian"
 
   handlers: 
