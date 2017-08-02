@@ -30,6 +30,7 @@
         dest:  /etc/default/tomcat7
       notify: restarttomcat
       when:  ansible_os_family=="Debian"
+      
     - name: add the tomcat user
       template:
         src: tomuser.j2
@@ -40,17 +41,10 @@
     - name: download the openmrs war file
       get_url:
         url: https://sourceforge.net/projects/openmrs/files/releases/OpenMRS_Platform_2.0.5/openmrs.war
-        dest: /home/maha/hosts/openmrs.war
-      when: ansible_os_family=="RedHat"
-
-
-    - name: copy past war file in nodes
-      copy: 
-        src: /home/maha/hosts/openmrs.war
-        dest: /var/lib/tomcat7/webapps/openmrs1.war
+        dest: /var/lib/tomcat7/webapps/openmrs.war
       notify: restarttomcat
       when:  ansible_os_family=="Debian"
-  
+
   handlers: 
     - name: restarthttpd
       service:
@@ -61,4 +55,3 @@
         name: tomcat7
         state: restarted  
  
-
