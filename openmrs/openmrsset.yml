@@ -23,6 +23,7 @@
       notify: 
       - restarttomcat
       when:  ansible_os_family=="Debian" 
+      
     - name: download the openmrs war file
       get_url:
         url: https://sourceforge.net/projects/openmrs/files/releases/OpenMRS_Platform_2.0.5/openmrs.war
